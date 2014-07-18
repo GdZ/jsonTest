@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src="jquery-1.8.0.js"></script>
+	<script type="text/javascript" src="data.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			for(var i=0; i<aa.length; i++){// add each p
+				var p = aa[i]; // current
+				$('#dataJson').append("<option value='" + p.pno + "'>" + p.p + "</option>");
+
+				var tmpA = p.area_s;
+				if(tmpA.length == 'undefined' || tmpA.length<=0) {
+					continue;
+				}else{
+					for (var j = 0; j < tmpA.length; j++) {
+						var area = tmpA[i];
+						$('#area_s').append("<option value='" + area.ano + "'>" + area.area + "</option>");
+						var tmpC = tmpA[j].city_s;
+						if(tmpC.length == 'undefined' || tmpC.length<=0) {
+							continue;
+						}else{
+							for (var k=0; k<tmpC.length; k++) {
+								var city = tmpC[k];
+								$('#city_s').append("<option value='" + city.cno + "'>" + city.city + "</option>");
+							};
+						}
+					};
+				}
+			}
+		});
+	</script>
+	<div>
+		ShengFen:<select id='dataJson'></select>
+		Area:<select id='area_s'></select>
+		City:<select id='city_s'></select>
+	</div>
+</body>
+</html>
